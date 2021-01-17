@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -35,27 +36,26 @@ const useStyles = makeStyles((theme) => ({
   },
   cardContent: {
     flexGrow: 1,
+  },
+  margin:{
+    flexGrow:1,
+    margin: 10,
   }
 }));
-
-console.log(plants);
 
 
 export default function Main(){
     const classes = useStyles();
     const {img,name,desc,price} = plants;
+    const [amount,setAmount] = useState(0);
+    console.log(amount);
     return(
         <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Album layout
-            </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Something short and leading about the collection below—its contents, the creator, etc.
-              Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-              entirely.
+              Store
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
@@ -96,11 +96,10 @@ export default function Main(){
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary">
-                      View
-                    </Button>
-                    <Button size="small" color="primary">
-                      Edit
+                    <Button variant="outlined" size="medium" color="primary" 
+                    className={classes.margin}
+                    onClick={()=> setAmount(amount + 1)}>
+                      Add to cart
                     </Button>
                   </CardActions>
                 </Card>
