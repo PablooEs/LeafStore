@@ -9,6 +9,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import '../data';
+import {addItemCart} from '../redux/actions/addItemCart';
+import {useDispatch} from 'react-redux';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -44,11 +46,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
+
+
 export default function Main(){
     const classes = useStyles();
     const {img,name,desc,price} = plants;
-    const [amount,setAmount] = useState(0);
-    console.log(amount);
+    const dispatch = useDispatch();
     return(
         <main>
         {/* Hero unit */}
@@ -98,7 +101,7 @@ export default function Main(){
                   <CardActions>
                     <Button variant="outlined" size="medium" color="primary" 
                     className={classes.margin}
-                    onClick={()=> setAmount(amount + 1)}>
+                    onClick={()=> dispatch(addItemCart())}>
                       Add to cart
                     </Button>
                   </CardActions>

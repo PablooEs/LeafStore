@@ -8,6 +8,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Badge from '@material-ui/core/Badge';
+import {useSelector} from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,8 +22,10 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
 export default function Nav(){
-    const classes = useStyles();
+  const classes = useStyles();
+  const counter = useSelector(state=> state.badge);
     return(
         <div className={classes.root}>
         <AppBar position="fixed">
@@ -34,7 +37,7 @@ export default function Nav(){
             Leaf-Store
           </Typography>
           <IconButton aria-haspopup="true" color="inherit">
-            <Badge color="error" badgeContent={0}>
+            <Badge color="error" badgeContent={counter}>
             <ShoppingCartIcon/>
             </Badge>
           </IconButton>
@@ -49,4 +52,4 @@ export default function Nav(){
         </AppBar>
         </div>
     );
-}
+};
