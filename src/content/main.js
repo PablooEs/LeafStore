@@ -100,7 +100,7 @@ export default function Main(){
                   <CardActions>
                     <Button variant="outlined" size="medium" color="primary" 
                     className={classes.margin}
-                    onClick={()=> dispatch(addItemCart())}>
+                    onClick={()=> dispatch(addItemCart(card))}>
                       Add to cart
                     </Button>
                   </CardActions>

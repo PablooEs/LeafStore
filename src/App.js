@@ -11,8 +11,10 @@ export default function App() {
     <React.Fragment>
       <Router>
         <Nav/>
-        <Route path="/main" component={Main}/>
-        <Route path="/cart" component={Cart}/>
+        <Switch>
+          <Route path="/" exact component={Main}/>
+          <Route path="/cart" component={Cart}/>
+        </Switch>
         <Footer/>
       </Router>
     </React.Fragment>

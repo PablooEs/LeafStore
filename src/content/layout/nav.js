@@ -9,16 +9,21 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Badge from '@material-ui/core/Badge';
 import {useSelector} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    marginBottom: 1,
   },
   menuButton: {
     marginRight: theme.spacing(2),
   },
   title: {
     flexGrow: 1,
+  },
+  link:{
+    color:'#fff',
   }
 }));
 
@@ -29,25 +34,29 @@ export default function Nav(){
     return(
         <div className={classes.root}>
         <AppBar position="fixed">
-        <Toolbar>
+          <Toolbar>
             <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                 <MenuIcon />
             </IconButton>
-          <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-            Leaf-Store
-          </Typography>
+              <Typography className={classes.title} variant="h6" color="inherit" noWrap>
+                <Link className={classes.link} to='/'>
+                  Leaf-Store
+                </Link>
+              </Typography>
           <IconButton aria-haspopup="true" color="inherit">
             <Badge color="error" badgeContent={counter}>
-            <ShoppingCartIcon/>
+            <Link className={classes.link} to='/cart'>
+              <ShoppingCartIcon/>
+            </Link>
             </Badge>
           </IconButton>
-          <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit">
+            <IconButton
+            aria-label="account of current user"
+            aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
+            color="inherit">
             <AccountCircle/>
-        </IconButton>
+          </IconButton>
         </Toolbar>
         </AppBar>
         </div>
