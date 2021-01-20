@@ -7,9 +7,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import '../data';
-import {addItemCart} from '../redux/actions/addItemCart';
-import {useDispatch} from 'react-redux';
+import {plants} from '../data';
+import { Link } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -19,9 +18,6 @@ const useStyles = makeStyles((theme) => ({
   heroContent: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(8, 0, 6),
-  },
-  heroButtons: {
-    marginTop: theme.spacing(4),
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
@@ -49,34 +45,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Main(){
     const classes = useStyles();
-    const {img,name,desc,price} = plants;
-    const dispatch = useDispatch();
     return(
         <main>
-        {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
               Store
             </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
-                <Grid item>
-                  <Button variant="contained" color="primary">
-                    Main call to action
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Secondary action
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
           <Grid container spacing={4}>
             {plants.map((card) => (
               <Grid item key={card.id} xs={12} sm={6} md={4}>
@@ -98,11 +76,11 @@ export default function Main(){
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button variant="outlined" size="medium" color="primary" 
-                    className={classes.margin}
-                    onClick={()=> dispatch(addItemCart(card))}>
-                      Add to cart
-                    </Button>
+                    <Link to ={`/viewItem/${card.id}`} className={classes.margin}>
+                      <Button variant="outlined" size="medium" color="primary">
+                        View
+                      </Button>
+                    </Link>
                   </CardActions>
                 </Card>
               </Grid>

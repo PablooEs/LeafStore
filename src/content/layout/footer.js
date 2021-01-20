@@ -5,6 +5,7 @@ import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles((theme) => ({
   footer: {
+    marginTop:100,
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },

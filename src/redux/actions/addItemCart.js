@@ -1,6 +1,8 @@
+import * as actionTypes from '../constants/cartConstants';
+
 export const addItemCart = (item) =>{
     return{
-        type: 'INCREMENT',
+        type: actionTypes,
         element: item,
     };
 };

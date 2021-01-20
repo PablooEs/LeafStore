@@ -1,5 +1,5 @@
 import badgeReducer from './badge';
-import cartReducer from './cartReducer'
+import {cartReducer} from './cartReducer'
 import {combineReducers} from 'redux'
 
 const allReducers = combineReducers({

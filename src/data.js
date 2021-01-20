@@ -1,4 +1,4 @@
-plants = [ 
+export const plants = [ 
   {
   id: 1,
   img: "https://i.pinimg.com/736x/ca/b4/73/cab473942dab3958ea156067e072ca28.jpg",
