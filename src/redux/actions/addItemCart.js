@@ -1,8 +1,6 @@
-import * as actionTypes from '../constants/cartConstants';
-
-export const addItemCart = (item) =>{
+export function addItemCart (item){
     return{
-        type: actionTypes,
-        element: item,
+        type: "ADD_TO_CART",
+        payload: item,
     };
 };

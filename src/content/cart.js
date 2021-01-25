@@ -8,7 +8,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { TableContainer } from '@material-ui/core';
-import {useSelector} from 'react-redux';
+import {useSelector,useDispatch} from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -30,7 +30,9 @@ const useStyles = makeStyles((theme) => ({
 
 function cart() {
     const classes = useStyles();
-    const listaElementos = useSelector(state => state.item);
+    const listaElementos = [];
+    const productos = useSelector(state => state.products);
+    console.log(products);
     return (
         <div className={classes.heroContent}>
           <Container maxWidth="md">

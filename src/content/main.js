@@ -9,6 +9,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {plants} from '../data';
 import { Link } from 'react-router-dom';
+import {addItemCart} from '../redux/actions/addItemCart';
+import {useDispatch} from 'react-redux';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -35,8 +37,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   margin:{
-    flexGrow:1,
     margin: 10,
+    flexGrow:1,
   }
 }));
 
@@ -76,11 +78,10 @@ export default function Main(){
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Link to ={`/viewItem/${card.id}`} className={classes.margin}>
-                      <Button variant="outlined" size="medium" color="primary">
+                      <Button component={Link} to ={`/viewItem/${card.id}`}
+                      className={classes.margin} variant="outlined" size="medium" color="primary" >
                         View
-                      </Button>
-                    </Link>
+                      </Button>  
                   </CardActions>
                 </Card>
               </Grid>

@@ -1,10 +1,8 @@
-import badgeReducer from './badge';
 import {cartReducer} from './cartReducer'
 import {combineReducers} from 'redux'
 
 const allReducers = combineReducers({
-    badge: badgeReducer, 
-    item: cartReducer,
+    products: cartReducer,
 });
 
 export default allReducers;

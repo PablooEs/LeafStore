@@ -7,6 +7,8 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import {plants} from '../data';
+import {addItemCart} from '../redux/actions/addItemCart';
+import {useDispatch} from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function itemDetail({match}) {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const item = plants.find((element)=> element.id == match.params.id);
   return (
     <div className={classes.root}>
@@ -55,7 +58,7 @@ export default function itemDetail({match}) {
               </Grid>
               <Grid item>
                 <Typography variant="body2" style={{ cursor: 'pointer' }}>
-                  <Button>Add to cart</Button>
+                  <Button onClick={()=>dispatch(addItemCart(item))}>Add to cart</Button>
                 </Typography>
               </Grid>
             </Grid>

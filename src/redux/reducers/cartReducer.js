@@ -1,22 +1,27 @@
 import * as actionTypes from '../constants/cartConstants';
+let counter = 0;
+let list = [];
 
-export const cartReducer = (state = {cartItems:[]},action) =>{
-    switch (action.type){
-        case actionTypes.ADD_TO_CART:
-            const item = action.payload;
+const defaultState = [];
+export const cartReducer = (state = defaultState, {type,payload}) =>{
+    switch (type){
+        case "ADD_TO_CART":{
 
-            const existItem = state.cartItems.find((x)=> x.product === item.product);
-            if (existItem){
-                return {
-                    ...state,
-                    cartItems: state.cartItems.map((x)=> x.product === existItem.product ? item : x)
-                }
+            const found = list.some(el => el.id === payload.id);
+            if (found){
+                counter +=1;
             }else{
-                return{
-                    ...state,
-                    cartItems: [...state.cartItems, item],
-                }
+                list.push(payload);
             }
+            
+            console.log(' Lista: ', list, 'Counter: ', counter);
+            return{
+                productos: list,
+                counter,
+                total: list.length,
+            };
+        }
+            
         default:
             return state;
     }

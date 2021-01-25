@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Nav(){
   const classes = useStyles();
-  const counter = useSelector(state=> state.badge);
+  const counter = useSelector(state=> state.products.total);
     return(
         <div className={classes.root}>
         <AppBar position="fixed">
