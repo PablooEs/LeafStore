@@ -30,9 +30,8 @@ const useStyles = makeStyles((theme) => ({
 
 function cart() {
     const classes = useStyles();
-    const listaElementos = [];
-    const productos = useSelector(state => state.products);
-    console.log(products);
+    let productos = [];
+    productos = useSelector(state => state.products.productos);
     return (
         <div className={classes.heroContent}>
           <Container maxWidth="md">
@@ -48,18 +47,18 @@ function cart() {
               <TableHead>
                 <TableRow>
                   <TableCell>Item</TableCell>
-                  {/* <TableCell align="right">Amount</TableCell> */}
+                  <TableCell align="right">Amount</TableCell>
                   <TableCell align="right">Individual Price</TableCell>
                   {/* <TableCell align="right">SubTotal Price</TableCell> */}
           </TableRow>
         </TableHead>
         <TableBody>
-          {listaElementos.map((row) => (
-            <TableRow key={row.name}>
+          {productos.map((row) => (
+            <TableRow key={row.id}>
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              {/* <TableCell align="right">{row.name}</TableCell> */}
+              <TableCell align="right">{row.counter}</TableCell>
               <TableCell align="right">{row.price}</TableCell>
               {/* <TableCell align="right">{row.price}</TableCell> */}
             </TableRow>

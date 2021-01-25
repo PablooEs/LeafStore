@@ -1,23 +1,37 @@
 import * as actionTypes from '../constants/cartConstants';
 let counter = 0;
 let list = [];
+let result = [];
+let props = ['counter'];
+
 
 const defaultState = [];
 export const cartReducer = (state = defaultState, {type,payload}) =>{
     switch (type){
         case "ADD_TO_CART":{
+            if(list != null){
 
-            const found = list.some(el => el.id === payload.id);
-            if (found){
-                counter +=1;
+                current = list.find(el => el.id === payload.id).foo;
+                current.counter += 1;
+
             }else{
-                list.push(payload);
+                current = payload;
+                current.counter = 1; 
+                list.push(current)
             }
             
-            console.log(' Lista: ', list, 'Counter: ', counter);
+
+            // const found = list.some(el => el.id === payload.id);
+            // if (found){
+                
+            //     list.map(el =>{ el.counter += 1});
+                
+            // }else{
+            //     list.push(payload);
+            //     list.map(el =>{ el.counter = 1});
+            // }
             return{
                 productos: list,
-                counter,
                 total: list.length,
             };
         }
