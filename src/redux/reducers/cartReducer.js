@@ -26,7 +26,13 @@ export const cartReducer = (state = defaultState, {type,payload}) =>{
                 total: list.length,
             };
         }
-            
+        case actionTypes.REMOVE_FROM_CART:{
+            list = list.filter(el => el.id != payload); 
+            return{
+                productos: list,
+                total: list.length,
+            };
+        }
         default:
             return state;
     }

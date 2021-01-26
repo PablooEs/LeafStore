@@ -7,7 +7,7 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import {plants} from '../data';
-import {addItemCart} from '../redux/actions/addItemCart';
+import {addItemCart} from '../redux/actions/cartActions';
 import {useDispatch} from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({

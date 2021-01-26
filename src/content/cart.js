@@ -10,7 +10,10 @@ import TableRow from '@material-ui/core/TableRow';
 import Box from '@material-ui/core/Box';
 import { TableContainer } from '@material-ui/core';
 import {useSelector,useDispatch} from 'react-redux';
+import {removeItemCart} from '../redux/actions/cartActions';
 import cartImage from './images/shopping-cart.png';
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -40,9 +43,10 @@ const useStyles = makeStyles((theme) => ({
 
 function cart() {
     const classes = useStyles();
+    const dispatch = useDispatch();
     let productos = useSelector(state => state.products.productos);
     let total = 0;
-    if(productos != null){
+    if(undefined !== productos && productos.length){
     productos.map((producto)=>{total += producto.price * producto.counter})
     return (
         <div className={classes.heroContent}>
@@ -73,9 +77,9 @@ function cart() {
               <TableCell align="right">{row.counter}</TableCell>
               <TableCell align="right">{row.price}</TableCell>
               <TableCell align="right">{row.price * row.counter}</TableCell>
+              <TableCell align="right"><Button onClick={()=>dispatch(removeItemCart(row.id))}><DeleteIcon color="error"/></Button></TableCell>
             </TableRow>
           ))}
-          <Typography component="div">
               <TableRow>
                 <TableCell align="left">
                   <Box fontWeight="fontWeightBold" fontSize={15}>TOTAL</Box>
@@ -84,7 +88,6 @@ function cart() {
                 <Box fontWeight="fontWeightBold" fontSize={15}>{total}</Box>
                 </TableCell>
               </TableRow>
-          </Typography>
           </TableBody>
         </Table>
         </TableContainer>

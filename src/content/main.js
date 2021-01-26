@@ -9,8 +9,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {plants} from '../data';
 import { Link } from 'react-router-dom';
-import {addItemCart} from '../redux/actions/addItemCart';
-import {useDispatch} from 'react-redux';
 
 
 const useStyles = makeStyles((theme) => ({
