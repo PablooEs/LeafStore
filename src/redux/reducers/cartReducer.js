@@ -2,7 +2,6 @@ import * as actionTypes from '../constants/cartConstants';
 
 let list = [];
 let current = {};
-let props = ['counter'];
 const defaultState = [];
 
 export const cartReducer = (state = defaultState, {type,payload}) =>{

@@ -8,7 +8,8 @@ import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import {plants} from '../data';
 import {addItemCart} from '../redux/actions/cartActions';
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
+import {Redirect,useHistory} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,9 +33,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 export default function itemDetail({match}) {
+  const history = useHistory();
   const classes = useStyles();
   const dispatch = useDispatch();
+  let logged = useSelector(state => state.login);
   const item = plants.find((element)=> element.id == match.params.id);
   return (
     <div className={classes.root}>
@@ -58,7 +63,7 @@ export default function itemDetail({match}) {
               </Grid>
               <Grid item>
                 <Typography variant="body2" style={{ cursor: 'pointer' }}>
-                  <Button onClick={()=>dispatch(addItemCart(item))}>Add to cart</Button>
+                  <Button onClick={()=>{logged ? dispatch(addItemCart(item)) : history.push('/login')}}>Add to cart</Button>
                 </Typography>
               </Grid>
             </Grid>

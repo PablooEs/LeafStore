@@ -42,3 +42,11 @@ export const plants = [
   price: '433.29'
 }
 ];
+
+export const loginInfo = [
+  {
+    id: 1,
+    username: "Pablo",
+    password: "123456",
+  }
+];
