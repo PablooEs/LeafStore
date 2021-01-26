@@ -7,6 +7,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Box from '@material-ui/core/Box';
 import { TableContainer } from '@material-ui/core';
 import {useSelector,useDispatch} from 'react-redux';
 import cartImage from './images/shopping-cart.png';
@@ -27,9 +28,10 @@ const useStyles = makeStyles((theme) => ({
     margin: 'auto',
   },
   imgContainer:{
-    margin:'auto'
+    marginTop:50,
   },
   img:{
+    display: 'block',
     margin:'auto',
     maxWidth: 400,
   }
@@ -39,8 +41,9 @@ const useStyles = makeStyles((theme) => ({
 function cart() {
     const classes = useStyles();
     let productos = useSelector(state => state.products.productos);
-
+    let total = 0;
     if(productos != null){
+    productos.map((producto)=>{total += producto.price * producto.counter})
     return (
         <div className={classes.heroContent}>
           <Container maxWidth="md">
@@ -59,8 +62,8 @@ function cart() {
                   <TableCell align="right">Amount</TableCell>
                   <TableCell align="right">Individual Price</TableCell>
                   <TableCell align="right">Sub Total</TableCell>
-          </TableRow>
-        </TableHead>
+                </TableRow>
+              </TableHead>
         <TableBody>
           {productos.map((row) => (
             <TableRow key={row.id}>
@@ -72,6 +75,16 @@ function cart() {
               <TableCell align="right">{row.price * row.counter}</TableCell>
             </TableRow>
           ))}
+          <Typography component="div">
+              <TableRow>
+                <TableCell align="left">
+                  <Box fontWeight="fontWeightBold" fontSize={15}>TOTAL</Box>
+                </TableCell>
+                <TableCell align="left">
+                <Box fontWeight="fontWeightBold" fontSize={15}>{total}</Box>
+                </TableCell>
+              </TableRow>
+          </Typography>
           </TableBody>
         </Table>
         </TableContainer>
