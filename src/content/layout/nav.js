@@ -55,7 +55,9 @@ export default function Nav(){
             aria-controls="primary-search-account-menu"
             aria-haspopup="true"
             color="inherit">
-            <AccountCircle/>
+              <Link className={classes.link} to='/login'>
+                <AccountCircle/>
+              </Link>
           </IconButton>
         </Toolbar>
         </AppBar>

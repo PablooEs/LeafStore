@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import {plants} from '../data';
 import {addItemCart} from '../redux/actions/cartActions';
 import {useDispatch,useSelector} from 'react-redux';
-import {Redirect,useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
