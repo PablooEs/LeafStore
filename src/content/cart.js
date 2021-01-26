@@ -9,6 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { TableContainer } from '@material-ui/core';
 import {useSelector,useDispatch} from 'react-redux';
+import cartImage from './images/shopping-cart.png';
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -25,13 +26,21 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 650,
     margin: 'auto',
   },
+  imgContainer:{
+    margin:'auto'
+  },
+  img:{
+    margin:'auto',
+    maxWidth: 400,
+  }
 }));
 
 
 function cart() {
     const classes = useStyles();
-    let productos = [];
-    productos = useSelector(state => state.products.productos);
+    let productos = useSelector(state => state.products.productos);
+
+    if(productos != null){
     return (
         <div className={classes.heroContent}>
           <Container maxWidth="md">
@@ -49,7 +58,7 @@ function cart() {
                   <TableCell>Item</TableCell>
                   <TableCell align="right">Amount</TableCell>
                   <TableCell align="right">Individual Price</TableCell>
-                  {/* <TableCell align="right">SubTotal Price</TableCell> */}
+                  <TableCell align="right">Sub Total</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -60,15 +69,33 @@ function cart() {
               </TableCell>
               <TableCell align="right">{row.counter}</TableCell>
               <TableCell align="right">{row.price}</TableCell>
-              {/* <TableCell align="right">{row.price}</TableCell> */}
+              <TableCell align="right">{row.price * row.counter}</TableCell>
             </TableRow>
           ))}
           </TableBody>
         </Table>
         </TableContainer>
       </Container>
-    </div>
-    )
+    </div>)}
+    else{
+      return(
+        <div className={classes.heroContent}>
+          <Container maxWidth="md">
+            <Typography component="h1" 
+            variant="h2" 
+            align="center" 
+            color="textPrimary" 
+            gutterBottom>
+              Your cart is empty!
+            </Typography>
+            <div className={classes.imgContainer}>
+              <img className={classes.img} src={cartImage} alt="cart"/>
+            </div>
+          </Container>
+        </div>
+      );
+    }
+    
 }
 
 export default cart;
