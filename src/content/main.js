@@ -19,17 +19,15 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(8, 0, 6),
   },
-  cardGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-  },
   card: {
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
   },
   cardMedia: {
-    paddingTop: '56.25%', // 16:9
+    maxWidth: '250px',
+    maxHeight: '250px',
+    objectFit: 'contain',
   },
   cardContent: {
     flexGrow: 1,
@@ -54,12 +52,12 @@ export default function Main(){
             </Typography>
           </Container>
         </div>
-        <Container className={classes.cardGrid} maxWidth="md">
+        <Container maxWidth="md">
           <Grid container spacing={4}>
             {plants.map((card) => (
               <Grid item key={card.id} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
-                  <CardMedia
+                  <CardMedia component="img"
                     className={classes.cardMedia}
                     image={card.img}
                     title={card.name}
@@ -67,9 +65,6 @@ export default function Main(){
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
                         {card.name}
-                    </Typography>
-                    <Typography>
-                        {card.desc}
                     </Typography>
                     <Typography color="secondary" variant="overline" display="block" gutterBottom>
                         price: {card.price}
